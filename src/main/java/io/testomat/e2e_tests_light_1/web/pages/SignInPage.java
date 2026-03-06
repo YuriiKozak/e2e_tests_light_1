@@ -7,17 +7,19 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class SignInPage {
 
-    public void open() {
-        Selenide.open("users/sign_in");
+    public SignInPage open() {
+        Selenide.open("/users/sign_in");
+        return this;
     }
 
-    public void loginUser(final String email, final String password) {
+    public SignInPage loginUser(final String email, final String password) {
         $("#content-desktop #user_email").setValue(email);
         $("#content-desktop #user_password").setValue(password);
         $("#content-desktop #user_remember_me").click();
         $("#content-desktop [name=\"commit\"]").click();
         $("#content-desktop #user_email").shouldBe(hidden);
         $("#content-desktop #user_password").shouldBe(hidden);
+        return this;
     }
 
 }
