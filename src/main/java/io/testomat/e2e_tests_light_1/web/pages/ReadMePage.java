@@ -1,7 +1,6 @@
 package io.testomat.e2e_tests_light_1.web.pages;
 
-import com.codeborne.selenide.Condition;
-
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -32,7 +31,7 @@ public class ReadMePage {
     }
 
     public ReadMePage isLoaded() {
-        $(".setting-header").shouldHave(Condition.text("Readme"));
+        $(".setting-header").shouldHave(text("Readme"));
         return this;
     }
 

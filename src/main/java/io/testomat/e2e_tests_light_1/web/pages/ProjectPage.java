@@ -1,7 +1,6 @@
 package io.testomat.e2e_tests_light_1.web.pages;
 
-import com.codeborne.selenide.Condition;
-
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -23,7 +22,7 @@ public class ProjectPage {
     }
 
     public ProjectPage isLoaded(final String text) {
-        $(".first").shouldHave(Condition.text(text));
+        $(".first").shouldHave(text(text));
         return this;
     }
 
