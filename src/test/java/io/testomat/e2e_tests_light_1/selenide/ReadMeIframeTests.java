@@ -1,4 +1,4 @@
-package io.testomat.e2e_tests_light_1;
+package io.testomat.e2e_tests_light_1.selenide;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class ReadMeIframeTests extends BaseTest {
 
     @Test
-    @DisplayName("Update ReadMe Text In Iframe")
+    @DisplayName("Test: Update ReadMe Text In Iframe")
     public void updateReadMeTextInIframeTest() {
         app.projectsPage
                 .isLoaded()

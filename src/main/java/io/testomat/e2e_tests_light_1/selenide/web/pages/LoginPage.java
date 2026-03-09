@@ -1,18 +1,18 @@
-package io.testomat.e2e_tests_light_1.web.pages;
+package io.testomat.e2e_tests_light_1.selenide.web.pages;
 
 import com.codeborne.selenide.Selenide;
 
 import static com.codeborne.selenide.Condition.hidden;
 import static com.codeborne.selenide.Selenide.$;
 
-public class SignInPage {
+public class LoginPage {
 
-    public SignInPage open() {
+    public LoginPage open() {
         Selenide.open("/users/sign_in");
         return this;
     }
 
-    public SignInPage loginUser(final String email, final String password) {
+    public LoginPage loginUser(final String email, final String password) {
         $("#content-desktop #user_email").setValue(email);
         $("#content-desktop #user_password").setValue(password);
         $("#content-desktop #user_remember_me").click();

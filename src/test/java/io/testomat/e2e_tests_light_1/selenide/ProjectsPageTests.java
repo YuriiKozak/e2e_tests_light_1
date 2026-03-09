@@ -1,4 +1,4 @@
-package io.testomat.e2e_tests_light_1;
+package io.testomat.e2e_tests_light_1.selenide;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -7,23 +7,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.codeborne.selenide.ClipboardConditions.content;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.LocalStorageConditions.itemWithValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.clipboard;
-import static com.codeborne.selenide.Selenide.localStorage;
-import static org.assertj.core.api.Assertions.assertThat;
 
-public class CollectionOfElementsTests extends BaseTest {
+public class ProjectsPageTests extends BaseTest {
 
     @Test
-    @DisplayName("Find All Products")
-    public void findAllProductsTest() {
+    @DisplayName("Test: Find All Projects")
+    public void findAllProjectsTest() {
         final List<String> expectedTests = List.of("2 tests", "3 tests", "0 tests",
                 "0 tests", "0 tests", "0 tests", "0 tests", "0 tests", "0 tests", "0 tests",
                 "0 tests", "0 tests", "0 tests", "0 tests", "0 tests", "0 tests", "0 tests",
@@ -47,27 +42,6 @@ public class CollectionOfElementsTests extends BaseTest {
         $$(byText("2 tests")).shouldHave(size(1));
         $$(byText("3 tests")).shouldHave(size(1));
         $$(byText("4 tests")).shouldHave(size(0));
-    }
-
-    @Test
-    @DisplayName("Clipboard")
-    public void clipboardTest() {
-        clipboard().setText(AUTOMOTIVE_PROJECT_NAME);
-        clipboard().shouldHave(content(AUTOMOTIVE_PROJECT_NAME));
-    }
-
-    @Test
-    @DisplayName("Local Storage")
-    public void localStorageTest() {
-        localStorage().setItem(EMAIL, PASSWORD);
-
-        final String currentTheme = localStorage().getItem(EMAIL);
-        assertThat(currentTheme).isNotNull();
-
-        localStorage().shouldHave(itemWithValue(EMAIL, currentTheme));
-
-        localStorage().removeItem(EMAIL);
-        localStorage().clear();
     }
 
 }
