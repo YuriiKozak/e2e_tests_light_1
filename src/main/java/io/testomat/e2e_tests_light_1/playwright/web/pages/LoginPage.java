@@ -16,7 +16,7 @@ public class LoginPage {
     }
 
     public LoginPage open() {
-        page.navigate("/users/sign_in");
+        page.navigate("");
         return this;
     }
 

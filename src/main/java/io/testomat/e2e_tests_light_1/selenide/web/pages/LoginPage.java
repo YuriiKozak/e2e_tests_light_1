@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class LoginPage {
 
     public LoginPage open() {
-        Selenide.open("/users/sign_in");
+        Selenide.open("");
         return this;
     }
 
