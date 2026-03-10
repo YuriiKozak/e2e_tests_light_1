@@ -1,15 +1,11 @@
 package io.testomat.e2e_tests_light_1.selenium;
 
 import io.testomat.e2e_tests_light_1.selenium.common.OpenProjectsPageExtension;
-import io.testomat.e2e_tests_light_1.selenium.common.OpenSignInPageAndSignInExtension;
-import io.testomat.e2e_tests_light_1.selenium.common.WebDriverLifecycleExtension;
+import io.testomat.e2e_tests_light_1.selenium.common.OpenSignInPageExtension;
+import io.testomat.e2e_tests_light_1.selenium.common.WebDriverExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith({
-        OpenSignInPageAndSignInExtension.class,
-        OpenProjectsPageExtension.class,
-        WebDriverLifecycleExtension.class
-})
+@ExtendWith({OpenSignInPageExtension.class, OpenProjectsPageExtension.class, WebDriverExtension.class})
 public abstract class BaseTest {
 
 }
