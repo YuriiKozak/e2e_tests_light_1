@@ -1,7 +1,5 @@
 package io.testomat.e2e_tests_light_1.playwright;
 
-import io.testomat.e2e_tests_light_1.playwright.web.pages.ProjectPage;
-import io.testomat.e2e_tests_light_1.playwright.web.pages.ProjectsPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +9,7 @@ public class ProjectPageTests extends BaseTest {
 
     @BeforeEach
     public void openProjectPage() {
-        new ProjectsPage(page).open().isLoaded();
+        app.projectsPage.open().isLoaded();
     }
 
     @ParameterizedTest(name = "Scenario {index}: Find projects by name: \"{0}\"")
@@ -22,10 +20,10 @@ public class ProjectPageTests extends BaseTest {
     })
     @DisplayName("Test: Search And Select Project")
     public void searchAndSelectProjectTest(final String text) {
-        new ProjectsPage(page)
+        app.projectsPage
                 .searchProject(text)
                 .selectProject(text);
-        new ProjectPage(page).isLoaded(text);
+        app.projectPage.isLoaded(text);
     }
 
 }

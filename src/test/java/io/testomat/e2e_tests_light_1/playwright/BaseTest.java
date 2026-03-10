@@ -1,26 +1,24 @@
 package io.testomat.e2e_tests_light_1.playwright;
 
 import com.microsoft.playwright.Page;
-import io.testomat.e2e_tests_light_1.playwright.common.PlayWrightExtension;
-import io.testomat.e2e_tests_light_1.playwright.web.pages.LoginPage;
-import io.testomat.e2e_tests_light_1.playwright.web.pages.ProjectsPage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import com.microsoft.playwright.junit.UsePlaywright;
+import io.testomat.e2e_tests_light_1.playwright.common.PlayWrightApplication;
+import io.testomat.e2e_tests_light_1.playwright.common.PlayWrightOptions;
+import org.junit.jupiter.api.BeforeEach;
 
 import static io.testomat.e2e_tests_light_1.utils.EnvConfig.EMAIL;
 import static io.testomat.e2e_tests_light_1.utils.EnvConfig.PASSWORD;
 
+@UsePlaywright(PlayWrightOptions.class)
 public abstract class BaseTest {
 
-    @RegisterExtension
-    private static final PlayWrightExtension pw = new PlayWrightExtension();
-    protected static Page page;
+    protected static PlayWrightApplication app;
 
-    @BeforeAll
-    public static void openSignInPageAndSignIn() {
-        page = pw.getPage();
-        new LoginPage(page).open().loginUser(EMAIL, PASSWORD);
-        new ProjectsPage(page).signInSuccess();
+    @BeforeEach
+    public void openSignInPageAndSignIn(final Page page) {
+        app = new PlayWrightApplication(page);
+        app.loginPage.open().loginUser(EMAIL, PASSWORD);
+        app.projectsPage.signInSuccess();
     }
 
 }

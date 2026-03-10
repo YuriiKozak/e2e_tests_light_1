@@ -4,7 +4,6 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static io.testomat.e2e_tests_light_1.utils.EnvConfig.URL;
 
 public class LoginPage {
 
@@ -17,7 +16,7 @@ public class LoginPage {
     }
 
     public LoginPage open() {
-        page.navigate(URL);
+        page.navigate("/users/sign_in");
         return this;
     }
 
