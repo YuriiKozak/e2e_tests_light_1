@@ -6,20 +6,31 @@ import io.restassured.specification.RequestSpecification;
 
 import static io.testomat.e2e_tests_light_1.utils.EnvConfig.URL;
 
-public abstract class BaseController {
+public abstract class BaseController<T> {
+
+    private String jwtToken;
 
     protected RequestSpecification getTestomatApi() {
         return RestAssured.given()
-                .accept(ContentType.JSON)
                 .baseUri(URL)
-                .basePath("/api")
-                .log().all();
+                .basePath("/api");
     }
 
-    protected RequestSpecification getTestomatApi(final String jwtToken) {
-        return getTestomatApi()
-                .header("Authorization", jwtToken)
+    protected RequestSpecification getRequestSpecification() {
+        final RequestSpecification requestSpecification = getTestomatApi()
                 .contentType(ContentType.JSON);
+
+        if (jwtToken != null) {
+            requestSpecification.header("Authorization", jwtToken);
+        }
+
+        return requestSpecification;
+    }
+
+    @SuppressWarnings("unchecked")
+    public T withToken(final String jwtToken) {
+        this.jwtToken = jwtToken;
+        return (T) this;
     }
 
 }
